@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1 - Promedio y Clasificación</title>
+</head>
+<body>
+
+    <h1>Clasificación del Promedio de Notas</h1>
+
+    <script>
+        let nota1, nota2, nota3, promedio, clasificacion;
+
+       
+        nota1 = parseFloat(prompt("Ingrese la primera nota (0 - 20):"));
+        nota2 = parseFloat(prompt("Ingrese la segunda nota (0 - 20):"));
+        nota3 = parseFloat(prompt("Ingrese la tercera nota (0 - 20):"));
+
+       
+        if (
+            isNaN(nota1) || nota1 < 0 || nota1 > 20 ||
+            isNaN(nota2) || nota2 < 0 || nota2 > 20 ||
+            isNaN(nota3) || nota3 < 0 || nota3 > 20
+        ) {
+            clasificacion = "Error: Notas fuera de rango (deben ser de 0 a 20)";
+            promedio = "N/A";
+        } else {
+            promedio = (nota1 + nota2 + nota3) / 3;
+
+            if (promedio < 13) {
+                clasificacion = "Desaprobado";
+            } else if (promedio < 16) { // Cubre de 13 a 15.99
+                clasificacion = "Regular";
+            } else if (promedio < 18) { // Cubre de 16 a 17.99
+                clasificacion = "Bueno";
+            } else { 
+                clasificacion = "Excelente";
+            }
+
+            promedio = promedio.toFixed(2);
+        }
+
+        
+        document.write("<h3>Resultados de la Evaluación:</h3>");
+        document.write("<p><b>Notas ingresadas:</b> [ " + nota1 + " | " + nota2 + " | " + nota3 + " ]</p>");
+        document.write("<p><b>Promedio obtenido:</b> " + promedio + "</p>");
+        document.write("<p><b>Clasificación correspondiente:</b> " + clasificacion + "</p>");
+    </script>
+
+</body>
+</html>
